@@ -215,6 +215,19 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-       <div aria-setsize="2px"><script type="text/javascript" src="//counter.websiteout.com/js/2/6/0/1"></script></div>
+         <div>
+        <p>The number of visitors is : <span id="cntr">0</span></p>
+      
+    
+      <script>
+        function counter_fn() {
+          var counter = document.getElementById("cntr");
+          var count = 0;
+          count = counter.value;
+          count = count + 1;
+          counter.innerHTML = count;
+        }
+        window.onload = counter_fn;
+      </script></div>
     </body>
 </html>
