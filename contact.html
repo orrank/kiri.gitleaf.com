@@ -93,30 +93,7 @@
                                     <!-- Submit Button-->
                                     <div class="d-grid"><button class="btn btn-primary btn-lg disabled" name="btnSub" id="submitButton" type="submit">Submit</button></div>
                                     </form>
-                                    <?php
-                                        if(isset($_POST["btnSub"]))
-                                        { 
-                                        $conn=mysqli_connect("localhost","root","","dbhello");
-
-                                            if(!$conn)
-                                            die ("<center>sorry bro not connected!!".mysqli_connect_error()."</center>");
-                                            else 
-                                            { 
-                                                if($_POST['txtName']==""||$_POST['txtMail']=="" || $_POST['txtContact']=="" || $_POST['txtMsg']==""|| $_POST['txtContact']<0 )
-                                                echo "<center><p class='ty v'>Please enter valid details!!</p></center>";
-                                                else 
-                                                { 
-                                                $sql="INSERT INTO tblWeb VALUES('$_POST[txtName]','$_POST[txtMail]','$_POST[txtContact]','$_POST[txtMsg]')";
-                                                
-                                                if(mysqli_query($conn,$sql))
-                                                echo "<center><p style='background-color:green;' class=ty>insert successsfully Added!!</p></center>";
-                                                else
-                                                echo "<center><p class='ty v'>not insert try again</p></center>";
-                                                }
-                                            } 
-                                            mysqli_close($conn);
-                                        }
-                                    ?>
+                                   
                             </div>
                         </div>
                     </div>
