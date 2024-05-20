@@ -47,7 +47,7 @@
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
                                
-                                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                                <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="post">
                                     <!-- Name input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
@@ -93,6 +93,30 @@
                                     <!-- Submit Button-->
                                     <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
                                     </form>
+                                    <?php
+                                        if(isset($_POST[getElementById('submitButton')]))
+                                        { 
+                                        $conn=mysqli_connect("localhost","root","","dbhello");
+
+                                            if(!$conn)
+                                            die ("<center>sorry bro not connected!!".mysqli_connect_error()."</center>");
+                                            else 
+                                            { 
+                                                if($_POST[getElementById('name')]=="" || $_POST[$_POST[getElementById('email')]]==""||$_POST[getElementById('phone')]=="" || $_POST[getElementById('message')]==""  )
+                                                echo "<center><p class='ty v'>Please enter valid details!!</p></center>";
+                                                else 
+                                                { 
+                                                $sql="INSERT INTO tblWeb VALUES('$_POST[getElementById('name')]','$_POST[getElementById('email')]','$_POST[getElementById('phone')]','$_POST[getElementById('message')]')";
+                                                
+                                                if(mysqli_query($conn,$sql))
+                                                echo "<center><p style='background-color:green;' class=ty>insert successsfully Added!!</p></center>";
+                                                else
+                                                echo "<center><p class='ty v'>not insert try again</p></center>";
+                                                }
+                                            } 
+                                            mysqli_close($conn);
+                                        }
+                                    ?>
                             </div>
                         </div>
                     </div>
