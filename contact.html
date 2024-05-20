@@ -50,26 +50,26 @@
                                 <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="post">
                                     <!-- Name input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                        <input class="form-control" name="txtName" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                                         <label for="name">Full name</label>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
                                     <!-- Email address input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                        <input class="form-control" name="txtMail" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
                                         <label for="email">Email address</label>
                                         <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                                         <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                                     </div>
                                     <!-- Phone number input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                        <input class="form-control" name="txtContact" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
                                         <label for="phone">Phone number</label>
                                         <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                                     </div>
                                     <!-- Message input-->
                                     <div class="form-floating mb-3">
-                                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                        <textarea  name="txtMsg" class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
                                         <label for="message">Message</label>
                                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                                     </div>
@@ -91,10 +91,10 @@
                                     <!-- an error submitting the form-->
                                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                     <!-- Submit Button-->
-                                    <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
+                                    <div class="d-grid"><button class="btn btn-primary btn-lg disabled" name="btnSub" id="submitButton" type="submit">Submit</button></div>
                                     </form>
                                     <?php
-                                        if(isset($_POST[getElementById('submitButton')]))
+                                        if(isset($_POST["btnSub"]))
                                         { 
                                         $conn=mysqli_connect("localhost","root","","dbhello");
 
@@ -102,11 +102,11 @@
                                             die ("<center>sorry bro not connected!!".mysqli_connect_error()."</center>");
                                             else 
                                             { 
-                                                if($_POST[getElementById('name')]=="" || $_POST[$_POST[getElementById('email')]]==""||$_POST[getElementById('phone')]=="" || $_POST[getElementById('message')]==""  )
+                                                if($_POST['txtName']==""||$_POST['txtMail']=="" || $_POST['txtContact']=="" || $_POST['txtMsg']==""|| $_POST['txtContact']<0 )
                                                 echo "<center><p class='ty v'>Please enter valid details!!</p></center>";
                                                 else 
                                                 { 
-                                                $sql="INSERT INTO tblWeb VALUES('$_POST[getElementById('name')]','$_POST[getElementById('email')]','$_POST[getElementById('phone')]','$_POST[getElementById('message')]')";
+                                                $sql="INSERT INTO tblWeb VALUES('$_POST[txtName]','$_POST[txtMail]','$_POST[txtContact]','$_POST[txtMsg]')";
                                                 
                                                 if(mysqli_query($conn,$sql))
                                                 echo "<center><p style='background-color:green;' class=ty>insert successsfully Added!!</p></center>";
